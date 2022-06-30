@@ -13,32 +13,34 @@ use App\Http\Controllers\WerkordersController;
             <?php
             $werkorders = WerkordersController::GetAlleWerkorders();
             print "<table class=\"table table-striped table-hover bg-white\" style=\"border:1px solid grey;\"><thead><tr>";
-            foreach($werkorders[0] as $key=>$value)
-            {
-                if ($key == "created_at" || $key == "updated_at"){
-                    // niks
-                } else {
-                    print "<th scope=\"col\">" . str_replace("_", " ", ucfirst($key)) . "</th>";
-                }
-            }
-            print "</tr></thead><tbody>";
-            foreach ($werkorders as $werkorder)
-            {
-                print "<tr>";
-                foreach($werkorder as $key=>$value)
+            if ($werkorders != null){
+                foreach($werkorders[0] as $key=>$value)
                 {
-                    if ($key == "plantijd" && $value == "00:00:00"){
-                        print "<td>-</td>";
-                    } else if ($key == "oplevertijd" && $value == "00:00:00"){
-                        print "<td>-</td>";
-                    } else if($key == "created_at" || $key == "updated_at"){
-                        //niks
+                    if ($key == "created_at" || $key == "updated_at"){
+                        // niks
                     } else {
-                        print "<td>" . $value . "</td>";
+                        print "<th scope=\"col\">" . str_replace("_", " ", ucfirst($key)) . "</th>";
                     }
-
                 }
-                print "</tr>";
+                print "</tr></thead><tbody>";
+                foreach ($werkorders as $werkorder)
+                {
+                    print "<tr>";
+                    foreach($werkorder as $key=>$value)
+                    {
+                        if ($key == "plantijd" && $value == "00:00:00"){
+                            print "<td>-</td>";
+                        } else if ($key == "oplevertijd" && $value == "00:00:00"){
+                            print "<td>-</td>";
+                        } else if($key == "created_at" || $key == "updated_at"){
+                            //niks
+                        } else {
+                            print "<td>" . $value . "</td>";
+                        }
+
+                    }
+                    print "</tr>";
+                }
             }
             print "</tbody></table>"
             ?>
