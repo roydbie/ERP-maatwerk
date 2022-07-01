@@ -7,7 +7,7 @@ use App\Http\Controllers\WerkordersController;
 @section('content')
     <style>
         .form-control {
-            background-color: white!important;
+            background-color: white;
         }
     </style>
     <div id="container" class="container" style="max-width: 90vw!important;">
